@@ -7,7 +7,7 @@ A simple locally run app to curate and rate local video clips and organize curat
 * Quickly preview your videos all in one place on a website, no matter where they are located in your files and folders.
 * Curate your videos by rating your whole collection (good, great, bad).
 * Download only your curated good and/or great videos, copying all of them into 1 place in your local file system. (Coming soon)
-* Tag your videos with arbitrary categoories, letting you filter or download your video collection by tag(s). (Coming soon)
+* Tag your videos with arbitrary categories, letting you copy, filter, or download your video collection by tag(s) and ratings. (Coming soon)
 
 
 This project is licensed under the terms of the MIT license.
