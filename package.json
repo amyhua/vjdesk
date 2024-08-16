@@ -3,24 +3,47 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "seed": "node scripts/seed-db.js",
+    "schema:reset": "sqlite3 db/database-development.sqlite < db/schema.sql",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.2",
+    "@heroicons/react": "^2.1.5",
+    "better-sqlite3": "^11.1.2",
+    "classnames": "^2.5.1",
+    "cross-fetch": "^4.0.0",
+    "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.3",
+    "fuse.js": "^7.0.0",
+    "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.5"
+    "sqlite3": "^5.1.7",
+    "video-extensions": "^2.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@next/eslint-plugin-next": "^14.2.5",
+    "@types/better-sqlite3": "^7.6.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "json-server": "^1.0.0-beta.1",
+    "lint-staged": "^15.2.7",
     "postcss": "^8",
+    "prisma": "^5.17.0",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "typescript": "^5"
   }
 }
