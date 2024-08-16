@@ -6,7 +6,7 @@ const sqlite3 = require("sqlite3").verbose();
 
 // Connecting to or creating a new SQLite database file
 const db = new sqlite3.Database(
-  process.env.DB_LOCAL_PATH || './db/development.db',
+  process.env.DB_LOCAL_PATH || './db/database-development.sqlite',
   sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
   (err) => {
     if (err) {

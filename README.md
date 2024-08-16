@@ -21,11 +21,17 @@ Preview:
 
 This app assumes you have video files in your `~/Downloads/` folder, searches all contents in Downloads for video files, and then serves them on a local website for you to rate (thumbs up/down/star), organize by rating, and (coming soon) download by thumbs up'd and starred.
 
-This app assumes you have NPM, node, and a local Postgresql server (`brew install postgres` on Mac) running.
+This app assumes you have NPM and node installed. See [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 This app is not meant to run on the web, only locally.
 
 ### Run the app
+
+Run the database boostrap commands:
+
+```bash
+npm run schema:reset
+```
 
 Run the local web server:
 
@@ -39,7 +45,7 @@ Right now, it will search for all videos in your Downloads folder and serve it o
 
 ## Contribute
 
-This app uses Typescript, React, and Next.js v14. This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This app is built with Typescript, React, TailwindCSS, Prisma, SQLite, and Next.js v14. This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 Resources:
 

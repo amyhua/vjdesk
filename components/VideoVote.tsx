@@ -2,7 +2,7 @@
 import React from "react";
 import classNames from "classnames";
 import path from "path";
-import { Vote, VoteValue } from "@/types";
+import { Vote, VoteFn, VoteValue } from "@/types";
 import { clipsApiUrl } from "@/modules/config";
 import { fetchJson } from "@/modules/fetch";
 
@@ -15,7 +15,7 @@ const VideoVote = ({
   file: string;
   width: number;
   initialVote?: Vote;
-  onVoteCb?: (val: VoteValue) => void;
+  onVoteCb?: VoteFn;
 }) => {
   const [vote, setVote] = React.useState(initialVote?.vote);
   const [loading, setLoading] = React.useState(false);
@@ -35,7 +35,7 @@ const VideoVote = ({
         width: width
       }}
       className={classNames(
-        "flex text-xl mt-4 mb-4 cursor-pointer border border-white/20 rounded-sm text-center"
+        "flex text-xl mt-4 mb-4 cursor-pointer border border-white/50 rounded-sm text-center"
       )}
     >
       {loading ? (
@@ -44,18 +44,18 @@ const VideoVote = ({
         <>
           <div
             onClick={() => onVote("up")}
-            className={classNames("p-2 flex-1 hover:bg-blue-600", {
-              "text-white/30 hover:text-white focus:text-white": vote !== "up",
-              "border-white text-white bg-blue-500": vote === "up"
+            className={classNames("p-2 flex-1 hover:bg-green-600", {
+              "text-white hover:text-white focus:text-white": vote !== "up",
+              "border-white text-white bg-green-300/30": vote === "up"
             })}
           >
             👍
           </div>
           <div
             onClick={() => onVote("super")}
-            className={classNames("p-2 flex-1 hover:bg-blue-600", {
-              "text-white/30 hover:text-white focus:text-white": vote !== "super",
-              "border-white text-white bg-yellow-500": vote === "super"
+            className={classNames("p-2 flex-1 hover:bg-yellow-600/30", {
+              "text-white hover:text-white focus:text-white": vote !== "super",
+              "border-white text-white bg-yellow-300/30": vote === "super"
             })}
           >
             👍👍
@@ -63,9 +63,9 @@ const VideoVote = ({
           <div
             onClick={() => onVote("down")}
             className={classNames("p-2 flex-1 hover:bg-red-600", {
-              "text-white/30 hover:text-white focus:text-white":
+              "text-white hover:text-white focus:text-white":
                 vote !== "down",
-              "border-white text-white bg-red-500": vote === "down"
+              "border-white text-white bg-red-500/30": vote === "down"
             })}
           >
             👎

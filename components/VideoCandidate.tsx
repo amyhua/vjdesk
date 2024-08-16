@@ -1,11 +1,9 @@
 'use client';
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import VideoPlayer from "./VideoPlayer";
 import VideoVote from "./VideoVote";
-import { CategoryDatum, Vote } from "@/types";
+import { CategoryDatum, Vote, VoteFn } from "@/types";
 import CategoriesAutocomplete from "./CategoriesAutocomplete";
-
-const WIDTH = 800;
 
 const dirPathSegments = (process.env.DOWNLOADS_DIR ?? "").split("/");
 const getExtension = (file: string) => file.split(".").pop() ?? "";
@@ -33,18 +31,33 @@ const getCategories = async (): Promise<CategoryDatum[]> => {
   return data.map((d: CategoryDatum) => ({ id: d.id, name: d.name }));
 };
 
+const INITIAL_WIDTH = 800;
+const VID_PADDING = 150;
+
 const VideoCandidate: FC<{
   file: string;
   fileCategories?: string[];
   initialVote?: Vote;
-  onVoteCb?: (val: "up" | "down" | "") => void;
+  onVoteCb?: VoteFn;
 }> = ({ file, initialVote, onVoteCb, fileCategories = [] }) => {
+  const [videoWidth, setVideoWidth] = React.useState(INITIAL_WIDTH);
   const path = file.split("/").slice(dirPathSegments.length).join("/");
   const filename = file.split("/")[file.split("/").length - 1];
+
+  useEffect(() => {
+    const resize = () => {
+      const width = window.innerWidth - 100;
+      setVideoWidth(width > 800 ? 800 : width);
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+
   return (
     <div tabIndex={0} className="px-3 py-5 m-1 border border-transparent flex items-center justify-center flex-col">
-      <VideoPlayer width={WIDTH} file={file} extension={getExtension(file)} />
-      <VideoVote initialVote={initialVote} width={WIDTH} file={file} onVoteCb={onVoteCb} />
+      <VideoPlayer width={videoWidth} file={file} extension={getExtension(file)} />
+      <VideoVote initialVote={initialVote} width={videoWidth - VID_PADDING} file={file} onVoteCb={onVoteCb} />
       <CategoriesAutocomplete fileCategories={fileCategories} file={file} />
       <div className="font-bold mb-0.5">{filename}</div>
       <div className="font-light text-sm mb-1 text-white/70">{path}</div>

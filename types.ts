@@ -23,3 +23,5 @@ export type ClipRecord = {
   file: string;
   categories: string;
 };
+
+export type VoteFn = (val: VoteValue) => void;
