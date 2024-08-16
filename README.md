@@ -4,6 +4,10 @@ A simple locally run app to curate and rate local video clips and organize curat
 
 This project is licensed under the terms of the MIT license.
 
+Preview:
+<img width="950" alt="Website Preview" src="https://github.com/user-attachments/assets/4f3d6be9-4e8c-4bc8-a6a7-c2e46c84b87b">
+
+
 
 ## Getting Started
 
